@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet" />
+    <title>Parcial 1</title>
+
+    <style>
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Angel Enrique Cano Arevalo</h1>
+    <h1>Alexander Villalta Oviedo</h1> 
+    <h1>Josue Adan Garcia Valiente</h1>
+
+    <h2>Desarrollo de Aplicaciones Web</h2>
+    <div class="container">
+        <div>
+        <h1>Lista de Usuarios</h1>
+        </div>
+        <div class="card">
+            <div class="card-header">
+            Usuarios
+            </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped ">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr th:each="usr : ${users} ">
+                    <td th:text="${usr.id}"></td>
+                    <td th:text="${usr.name}"></td>
+                    <td>
+                        <a class="btn btn-info " th:href="@{'/editar/'+ ${usr.id}}">Editar</a>
+                        <a class="btn btn-danger " th:href="@{'/eliminar/'+ ${usr.id}}"
+                        conlick="return confirm('¿Seguro deseas eliminar este registro?')"
+                        >Eliminar</a>
+                    </td>
+                </tr>
+            </table>
+            <a class="btn btn-dark " href="/nuevo">Agregar Usuario</a>
+        </div>
+    </div>
+    <footer>
+        <p>Angel Enrique Cano Arevalo</p>
+        <p>Josue Adan Garcia Valiente</p>
+        <p>Hector Alexander VIllalta Oviedo</p>
+    </footer>
+</body>
+</html>
